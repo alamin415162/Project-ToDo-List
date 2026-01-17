@@ -1,10 +1,9 @@
 
-// default project to hold todos
+// Lists the hold the todo and list of todos
 const TodoLists = []
 const Projects = []
 
-// a function to call instance and class and make it empty list
-
+//  this creates a function
 function CreateProject(){
     const project = []
     return project
@@ -22,18 +21,20 @@ class Todo{
         this.describtion = describtion;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.projectName = projectName
+        if(projectName){
+            this.projectName = projectName
+        }
+        
     }
 }
 
-// create a todo
+// create a todo by calling class todo
 function CreateTodo(title,describtion,dueDate,priority,projectName){
     let todo = new Todo(title,describtion,dueDate,priority,projectName)
     return todo
 }
 
-// check task existance
-const state = 0
+// check task availability
 function checkTask(todo, project){
     let ind = project.findIndex(key => key.title === todo.title)
     if(ind === -1){
@@ -68,30 +69,10 @@ function completeTodo(todo,List){
         List.splice(ind,1)
     }
 }
-
-function changePriority(level,todo,List){
-    let ind = List.findIndex(key => key.title === todo.title)
+// change todo's priority
+function changePriority(level,todo,project){
+    let ind = project.findIndex(key => key.title === todo.title)
     if(ind != -1){
-        List[ind].priority = level
+        project[ind].priority = level
     }
 }
-
-let project1 = CreateProject()
-let project2 = CreateProject()
-
-
-addProjectToProjects(project1)
-addProjectToProjects(project2)
-
-
-let task1 = CreateTodo('Odin','self paced',34,1,)
-let task2 = CreateTodo('Odin','self paced',34,2)
-
-//checkTask(task2)
-
-console.log(Projects)
-addToProject(task1,project2)
-changePriority(3,task1,project2)
-
-console.log(Projects)
-//addToDefault(task2)

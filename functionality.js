@@ -1,8 +1,4 @@
-
-// Lists the hold the todo and list of todos
-const TodoLists = []
-const Projects = []
-
+import { TodoLists,Projects,Todo } from "./constructor"
 //  this creates a function
 function CreateProject(){
     const project = []
@@ -14,19 +10,6 @@ function addProjectToProjects(project){
     Projects.push(project)
 }
 
-// a class to generate a todo objects with the inputs
-class Todo{
-    constructor(title,describtion,dueDate,priority,projectName){
-        this.title = title;
-        this.describtion = describtion;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        if(projectName){
-            this.projectName = projectName
-        }
-        
-    }
-}
 
 // create a todo by calling class todo
 function CreateTodo(title,describtion,dueDate,priority,projectName){

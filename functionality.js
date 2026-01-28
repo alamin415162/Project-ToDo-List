@@ -1,9 +1,47 @@
-import { TodoLists,Projects,Todo } from "./constructor"
-//  this creates a function
-function CreateProject(){
-    const project = []
-    return project
+// Lists the hold the todo and list of todos
+const TodoLists = []
+const Projects = []
+
+
+// a class to generate a todo objects with the inputs
+class Todo{
+    constructor(title,describtion,dueDate,priority,projectName){
+        this.title = title;
+        this.describtion = describtion;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        if(projectName){
+            this.projectName = projectName
+        }
+        
+    }
 }
+
+
+// a class that creates a project
+class Project{
+    constructor(name){
+        this.name = name
+
+        this.project = []
+    }
+
+    addTo(todo){
+        this.project.push(todo)
+    }
+}
+
+let todo1 = CreateTodo('Odin','self paced learning',23,2)
+let todo2 = CreateTodo('Physics','self paced learning',23,1)
+let project1 = new Project('study')
+project1.addTo(todo2)
+addProjectToProjects(project1)
+addToProject(todo1,'study')
+addToProject(todo1,'physics')
+
+
+
+
 
 // add a project to projects list
 function addProjectToProjects(project){
@@ -31,17 +69,25 @@ function checkTask(todo, project){
 
 // add to the default project
 function addToDefault(todo){
-    if(!state){
         TodoLists.push(todo)
         return
-    }
 
 }
 
 //adding todo to specific project
 
-function addToProject(todo,project){
-    project.push(todo)
+function addToProject(todo,projectName){
+    let folder = Projects.find(folder => folder.name === projectName)
+    if(folder){
+        folder.addTo(todo)
+        console.log('succesfully added')
+    }
+    else{
+        let folder = new Project(projectName)
+        folder.addTo(todo)
+        Projects.push(folder)
+        console.log('succesfulyy created and added')
+    }
 }
 
 
@@ -59,3 +105,9 @@ function changePriority(level,todo,project){
         project[ind].priority = level
     }
 }
+
+
+
+
+
+export {TodoLists,Projects,Todo,Project,addProjectToProjects,CreateTodo,checkTask,addToDefault,addToProject,completeTodo,changePriority}

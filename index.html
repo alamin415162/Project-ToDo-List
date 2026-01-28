@@ -15,13 +15,17 @@
         </header>
         <div id="main-page">
             <dialog id="myDialog">
-                <form method="dialog">
+                <form method="dialog" id="taskForm">
                     <p id="detail">Enter Task Detail</p>
                     <input type="text" placeholder="Title" id="title">
                     <input type="text" placeholder="Description" id="description">
                     <input type="text" placeholder="Due Date" id="dueDate">
                     <input type="number" placeholder="priority" id="priority">
-                    <button id="submit" type="submit">Ok</button>
+                    <label for="folder"><select name="folders" id="folder">
+                        <option value = '' disabled selected hidden>Choose Project</option>
+                        <option value="newFolder" id="choosedFolder">Add New Project</option>
+                    </select></label>
+                    <button id="submit" type="submit" value="submit">Ok</button>
                     <button id="submit" type="reset">Cancel</button>
                 </form>
             </dialog>
@@ -29,12 +33,13 @@
         </div>
         <div id="side-bar">
             <button id="add-project">Add Folder</button>
+            <button id="returnTo">returnTo</button>
         </div>
 
         <footer id="footer"></footer>
     </div>
 
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

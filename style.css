@@ -39,3 +39,7 @@ body, html{
     grid-area: footer;
     border: 1px solid black;
 }
+
+div{
+    border: 1px solid rgb(119, 122, 119);
+}
